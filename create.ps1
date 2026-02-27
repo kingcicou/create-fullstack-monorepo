@@ -14,11 +14,11 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 
 # ── Helper ────────────────────────────────────────────────────
 function Write-Utf8File {
-  param([string]$Path, [string]$Content)
-  $absolutePath = Join-Path $PWD.Path $Path
-  $dir = [System.IO.Path]::GetDirectoryName($absolutePath)
-  if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
-  [System.IO.File]::WriteAllText($absolutePath, $Content, (New-Object System.Text.UTF8Encoding $false))
+    param([string]$Path, [string]$Content)
+    $absolutePath = Join-Path $PWD.Path $Path
+    $dir = [System.IO.Path]::GetDirectoryName($absolutePath)
+    if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
+    [System.IO.File]::WriteAllText($absolutePath, $Content, (New-Object System.Text.UTF8Encoding $false))
 }
 
 # ── Banner ────────────────────────────────────────────────────
@@ -31,21 +31,21 @@ Write-Host ""
 
 # ── 1. Get project name ──────────────────────────────────────
 $projectName = if ($args.Count -gt 0) { $args[0] }
-               elseif ($env:PROJECT_NAME) { $env:PROJECT_NAME }
-               else { $null }
+elseif ($env:PROJECT_NAME) { $env:PROJECT_NAME }
+else { $null }
 
 if ([string]::IsNullOrWhiteSpace($projectName)) {
-  $projectName = Read-Host "Enter project name (e.g., my-app)"
+    $projectName = Read-Host "Enter project name (e.g., my-app)"
 }
 
 if ([string]::IsNullOrWhiteSpace($projectName)) {
-  Write-Host "[ERROR] Project name is required." -ForegroundColor Red
-  return
+    Write-Host "[ERROR] Project name is required." -ForegroundColor Red
+    return
 }
 
 if ($projectName -notmatch "^[a-zA-Z0-9_-]+$") {
-  Write-Host "[ERROR] Invalid name. Use only: letters, numbers, dash (-), underscore (_)." -ForegroundColor Red
-  return
+    Write-Host "[ERROR] Invalid name. Use only: letters, numbers, dash (-), underscore (_)." -ForegroundColor Red
+    return
 }
 
 $projectNameUpper = $projectName.ToUpper()
@@ -53,24 +53,24 @@ $projectNameUpper = $projectName.ToUpper()
 # ── 2. Check existing directory ──────────────────────────────
 $targetPath = Join-Path $PWD.Path $projectName
 if (Test-Path $targetPath) {
-  $answer = Read-Host "Directory '$projectName' already exists. Overwrite? (y/N)"
-  if ($answer -ne "y" -and $answer -ne "Y") {
-    Write-Host "Cancelled."
-    return
-  }
-  Remove-Item -Recurse -Force $targetPath
-  Write-Host "[CLEAN] Old directory removed." -ForegroundColor Yellow
+    $answer = Read-Host "Directory '$projectName' already exists. Overwrite? (y/N)"
+    if ($answer -ne "y" -and $answer -ne "Y") {
+        Write-Host "Cancelled."
+        return
+    }
+    Remove-Item -Recurse -Force $targetPath
+    Write-Host "[CLEAN] Old directory removed." -ForegroundColor Yellow
 }
 
 # ── 3. Create directory structure ────────────────────────────
 Write-Host "[CREATE] Scaffolding project '$projectName'..." -ForegroundColor Green
 
 $dirs = @(
-  "$projectName\01-docs",
-  "$projectName\02-infra\database\migrations",
-  "$projectName\03-apps\01-frontend",
-  "$projectName\03-apps\02-backend",
-  "$projectName\.vscode"
+    "$projectName\01-docs",
+    "$projectName\02-infra\database\migrations",
+    "$projectName\03-apps\01-frontend",
+    "$projectName\03-apps\02-backend",
+    "$projectName\.vscode"
 )
 foreach ($d in $dirs) { New-Item -ItemType Directory -Force -Path $d | Out-Null }
 
@@ -211,7 +211,12 @@ Write-Utf8File -Path "$projectName\$projectName.code-workspace" -Content @'
         },
         "python.defaultInterpreterPath": "${workspaceFolder:🌐 Backend}/.venv/bin/python",
         "python.analysis.extraPaths": ["${workspaceFolder:🌐 Backend}"],
-        "git.scanRepositories": true,
+        "git.scanRepositories": [
+          ".",
+          //"02-infra",
+          //"03-apps/01-frontend",
+          //"03-apps/02-backend",
+        ],
         "files.watcherExclude": {
             "**/node_modules/**": true,
             "**/.venv/**": true,
@@ -360,14 +365,15 @@ Write-Host "[CREATE] All files generated." -ForegroundColor Green
 
 # ── 5. Git init ───────────────────────────────────────────────
 if (Get-Command git -ErrorAction SilentlyContinue) {
-  Push-Location $projectName
-  git init -q 2>$null
-  git add -A 2>$null
-  git commit -q -m "feat: initial monorepo structure" 2>$null
-  Pop-Location
-  Write-Host "[GIT] Repository initialized with initial commit." -ForegroundColor Green
-} else {
-  Write-Host "[SKIP] Git not found, skipping initialization." -ForegroundColor Yellow
+    Push-Location $projectName
+    git init -q 2>$null
+    git add -A 2>$null
+    git commit -q -m "feat: initial monorepo structure" 2>$null
+    Pop-Location
+    Write-Host "[GIT] Repository initialized with initial commit." -ForegroundColor Green
+}
+else {
+    Write-Host "[SKIP] Git not found, skipping initialization." -ForegroundColor Yellow
 }
 
 # Clean up env var

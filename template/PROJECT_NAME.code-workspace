@@ -1,46 +1,51 @@
 {
-    "folders": [
-        { "path": ".", "name": "🌳 Root" },
-        { "path": "01-docs", "name": "📄 Documentation" },
-        { "path": "02-infra", "name": "🏗️ Infrastructure" },
-        { "path": "03-apps/01-frontend", "name": "💻 Frontend" },
-        { "path": "03-apps/02-backend", "name": "🌐 Backend" }
+  "folders": [
+    { "path": ".", "name": "🌳 Root" },
+    { "path": "01-docs", "name": "📄 Documentation" },
+    { "path": "02-infra", "name": "🏗️ Infrastructure" },
+    { "path": "03-apps/01-frontend", "name": "💻 Frontend" },
+    { "path": "03-apps/02-backend", "name": "🌐 Backend" },
+  ],
+  "settings": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/__pycache__": true,
+      "**/.venv": true,
+      "**/dist": true,
+    },
+    "python.defaultInterpreterPath": "${workspaceFolder:🌐 Backend}/.venv/bin/python",
+    "python.analysis.extraPaths": ["${workspaceFolder:🌐 Backend}"],
+    "git.scanRepositories": [
+      ".",
+      //"02-infra",
+      //"03-apps/01-frontend",
+      //"03-apps/02-backend",
     ],
-    "settings": {
-        "editor.tabSize": 2,
-        "editor.formatOnSave": true,
-        "files.exclude": {
-            "**/.git": true,
-            "**/node_modules": true,
-            "**/__pycache__": true,
-            "**/.venv": true,
-            "**/dist": true
-        },
-        "python.defaultInterpreterPath": "${workspaceFolder:🌐 Backend}/.venv/bin/python",
-        "python.analysis.extraPaths": ["${workspaceFolder:🌐 Backend}"],
-        "git.scanRepositories": true,
-        "files.watcherExclude": {
-            "**/node_modules/**": true,
-            "**/.venv/**": true,
-            "**/__pycache__/**": true
-        }
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/.venv/**": true,
+      "**/__pycache__/**": true,
     },
-    "extensions": {
-        "recommendations": [
-            "ms-python.python",
-            "ms-python.vscode-pylance",
-            "dbaeumer.vscode-eslint",
-            "esbenp.prettier-vscode",
-            "bradlc.vscode-tailwindcss"
-        ]
-    },
-    "launch": {
-        "compounds": [
-            {
-                "name": "Full Stack Dev",
-                "configurations": ["Backend: Debug", "Frontend: Debug"],
-                "presentation": { "hidden": false, "group": "all", "order": 1 }
-            }
-        ]
-    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+    ],
+  },
+  "launch": {
+    "compounds": [
+      {
+        "name": "Full Stack Dev",
+        "configurations": ["Backend: Debug", "Frontend: Debug"],
+        "presentation": { "hidden": false, "group": "all", "order": 1 },
+      },
+    ],
+  },
 }

@@ -211,7 +211,12 @@ cat > "$PROJECT_NAME/${PROJECT_NAME}.code-workspace" <<'EOF'
         },
         "python.defaultInterpreterPath": "${workspaceFolder:🌐 Backend}/.venv/bin/python",
         "python.analysis.extraPaths": ["${workspaceFolder:🌐 Backend}"],
-        "git.scanRepositories": true,
+        "git.scanRepositories": [
+         ".",
+         //"02-infra",
+         //"03-apps/01-frontend",
+         //"03-apps/02-backend",
+        ],
         "files.watcherExclude": {
             "**/node_modules/**": true,
             "**/.venv/**": true,
