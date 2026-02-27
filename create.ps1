@@ -1,4 +1,4 @@
-﻿# create-fullstack-monorepo (PowerShell Edition)
+# create-fullstack-monorepo (PowerShell Edition)
 #
 # Usage (remote):
 #   irm https://raw.githubusercontent.com/kingcicou/create-fullstack-monorepo/main/create.ps1 | iex
@@ -149,6 +149,7 @@ npm run dev
 ## 🤝 贡献指南
 
 请参考 **[贡献指南文档](01-docs/CONTRIBUTING.md)** 。
+
 '@) -replace '{{PROJECT_NAME_UPPER}}', $projectNameUpper -replace '{{PROJECT_NAME}}', $projectName
 
 Write-Utf8File -Path "$projectName\README.md" -Content $readmeContent
@@ -297,7 +298,7 @@ Write-Utf8File -Path "$projectName\01-docs\README.md" -Content @'
 项目文档中心，包含所有设计与规范文档。
 
 | 文档 | 说明 |
-|------|------|
+| ------ | ------ |
 | [项目背景](00-background.md) | 项目背景与目标 |
 | [需求分析](01-requirements.md) | 功能与非功能需求 |
 | [概要设计](02-overview.md) | 系统总体设计 |
@@ -306,6 +307,7 @@ Write-Utf8File -Path "$projectName\01-docs\README.md" -Content @'
 | [API 接口](05-API.md) | 接口文档 |
 | [数据库设计](06-database.md) | 数据模型设计 |
 | [贡献指南](CONTRIBUTING.md) | 如何参与贡献 |
+
 '@
 
 # Infra
@@ -313,6 +315,7 @@ Write-Utf8File -Path "$projectName\02-infra\README.md" -Content @'
 # Infrastructure & Database
 
 基础设施与数据库管理目录。
+
 '@
 
 Write-Utf8File -Path "$projectName\02-infra\database\migrations\001_init.sql" -Content @'

@@ -366,7 +366,7 @@ write_file "$PROJECT_NAME/01-docs/README.md" <<'EOF'
 项目文档中心，包含所有设计与规范文档。
 
 | 文档 | 说明 |
-|------|------|
+| ------ | ------ |
 | [项目背景](00-background.md) | 项目背景与目标 |
 | [需求分析](01-requirements.md) | 功能与非功能需求 |
 | [概要设计](02-overview.md) | 系统总体设计 |
