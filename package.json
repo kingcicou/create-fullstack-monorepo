@@ -1,0 +1,30 @@
+{
+  "name": "create-fullstack-monorepo",
+  "version": "1.0.0",
+  "description": "Scaffold a fullstack monorepo project with frontend, backend, docs, and infra.",
+  "type": "module",
+  "license": "MIT",
+  "author": "",
+  "bin": {
+    "create-fullstack-monorepo": "index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "template"
+  ],
+  "keywords": [
+    "create",
+    "scaffold",
+    "monorepo",
+    "fullstack",
+    "template",
+    "project-generator"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}

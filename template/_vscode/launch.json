@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Backend: Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder:🌐 Backend}",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--reload",
+                "--host", "0.0.0.0",
+                "--port", "8000"
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder:🌐 Backend}"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Frontend: Debug",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder:💻 Frontend}/src",
+            "preLaunchTask": "npm: dev (frontend)"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.code-workspace
+
+# --- 前端忽略 ---
+03-apps/01-frontend/node_modules/
+03-apps/01-frontend/dist/
+03-apps/01-frontend/.env.local
+
+# --- 后端忽略 ---
+03-apps/02-backend/__pycache__/
+03-apps/02-backend/.venv/
+03-apps/02-backend/*.egg-info/
+03-apps/02-backend/.env
+
+# --- 数据库忽略 ---
+02-infra/database/*.db
+02-infra/database/*.sqlite
+
+# --- 日志与临时文件 ---
+*.log
+tmp/
+temp/
