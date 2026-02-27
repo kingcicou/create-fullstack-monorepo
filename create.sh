@@ -3,7 +3,7 @@
 # create-fullstack-monorepo (Bash Edition)
 #
 # Usage:
-#   bash <(curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/create-fullstack-monorepo/main/create.sh) my-app
+#   bash <(curl -fsSL https://raw.githubusercontent.com/kingcicou/create-fullstack-monorepo/main/create.sh) my-app
 #
 #   Or clone & run locally:
 #   ./create.sh my-app
