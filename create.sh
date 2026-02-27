@@ -343,7 +343,7 @@ write_file "$PROJECT_NAME/01-docs/CONTRIBUTING.md" <<'EOF'
 
 请使用 [Conventional Commits](https://www.conventionalcommits.org/) 规范：
 
-```
+```text
 feat: 新功能
 fix: 修复 Bug
 docs: 文档变更
