@@ -4,11 +4,24 @@
 
 ## 🚀 使用方式
 
-Bash 一键执行
+### 方式一：Bash 一键执行（macOS / Linux / WSL / Git Bash）
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/kingcicou/create-fullstack-monorepo/main/create.sh) my-app
 ```
+
+### 方式二：PowerShell 一键执行（Windows）
+
+```powershell
+irm https://raw.githubusercontent.com/kingcicou/create-fullstack-monorepo/main/create.ps1 | iex
+```
+
+> 执行后会提示输入项目名称。或指定项目名：
+>
+> ```powershell
+> $env:PROJECT_NAME="my-app"; irm https://raw.githubusercontent.com/kingcicou/create-fullstack-monorepo/main/create.ps1 | iex
+> ```
+
 
 ## 📂 项目结构
 
